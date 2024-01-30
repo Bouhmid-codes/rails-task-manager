@@ -1,0 +1,29 @@
+
+<div class="container d-flex justify-content-center">
+  <div>
+    <h1>All tasks</h1>
+    <ul class="list-group">
+    <% @tasks.each do |task| %>
+      <% checked = task.completed ? 'checked' : '' %>
+      <li class="list-group-item">
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input class="form-check-input mt-0" type="checkbox" <%= checked %>>
+          </div>
+
+          <div class="input-group-text">
+            <%= link_to task.title,  task_path(task),
+            class: 'link-dark ms-2 link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-decoration-none' %> .
+          </div>
+          <div class="input-group-text">
+            <%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe,
+            task_path(task), class: 'link-success',
+            data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}%>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <%= link_to '<i class="fa-solid fa-plus"></i> Add new task'.html_safe, new_task_path, class:'btn btn-outline-dark mx-1 mt-2'%>
+  </div>
+</div>

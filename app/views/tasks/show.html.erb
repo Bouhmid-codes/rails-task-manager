@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card mt-3">
+    <h5 class="card-header">
+      <%= @task.title.capitalize %>
+    </h5>
+    <div class="card-body">
+      <p class="card-text"><%= @task.details %></p>
+      <%= link_to '<i class="fa-solid fa-pencil"></i> Edit this task'.html_safe, edit_task_path, class: 'btn btn-outline-success mx-1' %>
+    </div>
+  </div>
+
+  <%= link_to '<i class="fa-solid fa-angles-left"></i> Back to List'.html_safe, tasks_path, class: 'btn btn-outline-dark mx-1 mt-2' %>
+</div>
